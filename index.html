@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Muhakeme Uyap — Gizlilik Politikası</title>
+<meta name="description" content="Muhakeme Uyap tarayıcı eklentisi gizlilik politikası. Salt-okuma, yerel; veri cihazdan çıkmaz." />
+<style>
+  :root{
+    --mlbg:#1E63B0; --mlbg2:#3D86D6; --mlbg3:#18548F;
+    --bg:#EDF4FC; --fg:#0C3D72; --muted:#5B7CA0; --kart:#FFFFFF; --cizgi:#D9E7F6; --canli:#1FA971;
+  }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html,body{ min-height:100%; background:radial-gradient(1200px 700px at 50% -8%, #FFFFFF 0%, var(--bg) 60%);
+    color:var(--fg); font-family:system-ui,-apple-system,"Segoe UI",sans-serif; line-height:1.6; }
+  .wrap{ max-width:760px; margin:0 auto; padding:48px 24px 72px; }
+  header{ display:flex; align-items:center; gap:16px; margin-bottom:10px; }
+  .mono{ width:56px; height:56px; border-radius:14px; flex:0 0 auto;
+    background:linear-gradient(150deg,var(--mlbg2) 0%,var(--mlbg) 58%,var(--mlbg3) 100%);
+    box-shadow:0 8px 22px rgba(12,45,82,.24), inset 0 1px 0 rgba(255,255,255,.32);
+    display:flex; align-items:center; justify-content:center; }
+  .mono span{ font-family:Georgia,serif; font-size:32px; font-weight:700; color:#fff; text-shadow:0 1px 2px rgba(0,0,0,.28); line-height:1; }
+  h1{ font-family:Georgia,"Times New Roman",serif; font-size:27px; font-weight:600; }
+  .tarih{ font-size:13px; color:var(--muted); margin:14px 0 28px; }
+  .ozet{ background:#E9F2FC; border:1px solid var(--cizgi); border-radius:13px; padding:18px 20px;
+    font-size:15px; color:#28527e; margin-bottom:30px; }
+  .ozet b{ color:var(--fg); }
+  h2{ font-family:Georgia,serif; font-size:19px; font-weight:600; margin:30px 0 10px;
+    padding-bottom:7px; border-bottom:1px solid var(--cizgi); }
+  p{ font-size:15px; color:#28527e; margin-bottom:12px; }
+  ul{ margin:6px 0 14px 22px; }
+  li{ font-size:15px; color:#28527e; margin-bottom:8px; }
+  b{ color:var(--fg); font-weight:600; }
+  code{ font-family:"Cascadia Code",Consolas,monospace; background:#EAF2FC; border:1px solid var(--cizgi);
+    border-radius:6px; padding:2px 7px; font-size:13.5px; color:var(--mlbg3); }
+  .iletisim{ margin-top:34px; padding:18px 20px; background:var(--kart); border:1px solid var(--cizgi);
+    border-radius:13px; font-size:14.5px; }
+  .iletisim b{ color:var(--fg); }
+  a{ color:var(--mlbg); }
+  footer{ margin-top:40px; font-size:12.5px; color:var(--muted); text-align:center; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="mono"><span>m</span></div>
+      <div>
+        <h1>Muhakeme Uyap — Gizlilik Politikası</h1>
+      </div>
+    </header>
+    <div class="tarih">Son güncelleme: 28 Haziran 2026</div>
+
+    <div class="ozet">
+      Muhakeme Uyap salt-okuma çalışan, kullanıcı tetiklemeli bir tarayıcı eklentisidir. Eklenti
+      <b>hiçbir veriyi uzak bir sunucuya, geliştiriciye veya üçüncü taraflara göndermez.</b> İndirilen
+      tüm belgeler ve oturum bilgileri yalnızca sizin bilgisayarınızda kalır.
+    </div>
+
+    <h2>Eklentinin eriştiği veriler</h2>
+    <p>Eklenti yalnızca siz UYAP portalına giriş yapıp panelden indirmeyi başlattığınızda çalışır ve şunlara erişir:</p>
+    <ul>
+      <li><b>UYAP Avukat ve Vatandaş portallarındaki dosya/evrak listeleri ve belge içerikleri</b> — yalnızca sizin yetkili olduğunuz, kendi oturumunuzdaki dosyalar.</li>
+      <li><b>Yerel uygulama oturum jetonu</b> — bilgisayarınızda çalışan Muhakeme Uyap masaüstü uygulamasının (<code>127.0.0.1:8731</code>) ürettiği erişim jetonu.</li>
+    </ul>
+
+    <h2>Verilerin nereye gittiği</h2>
+    <p>İndirilen belgeler <b>yalnızca kendi bilgisayarınızda çalışan Muhakeme Uyap masaüstü uygulamasına</b>
+    (yerel adres: <code>127.0.0.1</code>) iletilir ve masaüstündeki arşiv klasörünüze kaydedilir. Bu adres
+    internete çıkmaz; veri cihazınızdan ayrılmaz.</p>
+    <p>Eklenti <b>şunları yapmaz:</b></p>
+    <ul>
+      <li>Verilerinizi internet üzerinden herhangi bir sunucuya göndermez.</li>
+      <li>Analitik, izleme, çerez tabanlı reklam veya kullanım istatistiği toplamaz.</li>
+      <li>Verilerinizi satmaz, kiralamaz veya üçüncü taraflarla paylaşmaz.</li>
+      <li>İkinci bir UYAP oturumu açmaz.</li>
+    </ul>
+
+    <h2>Veri saklama</h2>
+    <ul>
+      <li><b>Belgeler:</b> Bilgisayarınızdaki arşiv klasöründe, sizin kontrolünüzde kalır. Dilediğiniz zaman silebilirsiniz.</li>
+      <li><b>Oturum jetonu ve ilerleme durumu:</b> Tarayıcının yerel deposunda (<code>chrome.storage.local</code>) cihazınızda saklanır. Eklentiyi kaldırdığınızda silinir.</li>
+    </ul>
+
+    <h2>Yasal dayanak ve sorumluluk</h2>
+    <p>Eklenti yalnızca sizin halihazırda erişim yetkiniz olan UYAP belgelerine, sizin talebinizle erişir.
+    Verilerin işlenmesi tümüyle sizin cihazınızda ve kontrolünüzde gerçekleşir.</p>
+
+    <div class="iletisim">
+      <b>İletişim</b><br>
+      Av. Mehmet Arın Gülüm<br>
+      E-posta: <a href="mailto:nemezis@tutamail.com">nemezis@tutamail.com</a><br>
+      Web: <a href="https://muhakeme.ai" target="_blank" rel="noopener">muhakeme.ai</a>
+    </div>
+
+    <footer>© 2026 Muhakeme.ai · Av. Mehmet Arın Gülüm</footer>
+  </div>
+</body>
+</html>

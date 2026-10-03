@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Muhakeme Uyap — Gizlilik Politikası</title>
-<meta name="description" content="Muhakeme Uyap tarayıcı eklentisi gizlilik politikası. Salt-okuma, kullanıcı tetiklemeli; belge içerikleri cihazdan çıkmaz." />
+<meta name="description" content="Muhakeme Uyap tarayıcı eklentisi gizlilik politikası. Kullanıcı tetiklemeli; belge içerikleri cihazdan çıkmaz, sunucuya yalnızca hesap ve lisans trafiği gider." />
 <style>
   :root{
     --mlbg:#1E63B0; --mlbg3:#18548F; --krem:#EFE8D6;
@@ -52,18 +52,21 @@
         <h1>Muhakeme Uyap — Gizlilik Politikası</h1>
       </div>
     </header>
-    <div class="tarih">Son güncelleme: 14 Temmuz 2026 · Eklenti sürümü 0.7.0</div>
+    <div class="tarih">Son güncelleme: 3 Ekim 2026 · Eklenti sürümü 0.12.0</div>
 
     <div class="ozet">
-      Muhakeme Uyap salt-okuma çalışan, kullanıcı tetiklemeli bir tarayıcı eklentisidir.
+      Muhakeme Uyap, kullanıcı tetiklemeli bir tarayıcı eklentisidir; UYAP'taki dosya ve belgelerinizi yalnızca okur.
       <b>UYAP dosya ve belge içerikleriniz hiçbir uzak sunucuya, geliştiriciye veya üçüncü taraflara gönderilmez;</b>
       yalnızca kendi bilgisayarınızda çalışan Muhakeme Uyap masaüstü uygulamasına iletilir ve orada kalır.
-      Uzak sunucuya (muhakeme.ai) giden tek trafik, hesabınıza giriş yapmanız ve lisans durumunuzun
-      doğrulanmasıdır. Eklenti analitik, izleme veya reklam amaçlı hiçbir veri toplamaz.
+      Muhakeme Uyap; hesabınıza giriş yapmanız, lisans durumunuzun doğrulanması ve kullanım koşullarını kabul
+      etmeniz için muhakeme.ai'ye bağlanır. Bu bağlantılarda UYAP dosya ve belge içeriği gönderilmez.
+      Eklenti analitik, izleme veya reklam amaçlı hiçbir veri toplamaz. UYAP'ta yaptığı tek
+      değişiklik, siz <b>onayladığınızda</b> bir dosyayı sık kullanılanlar listenizden çıkarmaktır; her çıkarma
+      öncesinde eklenti bir onay kutusu gösterir.
     </div>
 
     <h2>1. Eklentinin eriştiği veriler</h2>
-    <p>Eklenti yalnızca siz UYAP portalına giriş yapıp panelden bir işlem başlattığınızda çalışır.</p>
+    <p>Eklenti UYAP portallarının sayfalarında çalışır. Belge indirme yalnızca siz panelden başlattığınızda yapılır; liste bilgilerinin hangi durumlarda kendiliğinden okunduğu Bölüm 2'de (UYAP sayfalarındaki içerik betiği) açıklanmıştır.</p>
     <table>
       <tr><th>Veri</th><th>Neden</th><th>Nereye gider</th></tr>
       <tr>
@@ -77,9 +80,10 @@
         <td>Tarayıcının yerel deposunda (<code>chrome.storage.local</code>) cihazınızda kalır.</td>
       </tr>
       <tr>
-        <td><b>Muhakeme hesap bilgileri (e-posta adresi, oturum çerezi)</b><br>
-            <span style="font-size:13px">— yalnızca eklenti penceresinden giriş yapmayı seçerseniz</span></td>
-        <td>Ürünün lisans/deneme durumunu doğrulamak için hesabınıza giriş yapmak.</td>
+        <td><b>Muhakeme hesap bilgileri (e-posta adresi, tek kullanımlık giriş kodu, oturum çerezi)</b><br>
+            <span style="font-size:13px">— giriş tercihen masaüstü uygulaması üzerinden yürür; eklenti bu bilgileri yalnızca
+            eklenti penceresinden giriş yapmayı ya da oturum eşitlemeyi seçerseniz işler</span></td>
+        <td>Hesabınıza giriş yapmak ve ürünün lisans/deneme durumunu doğrulamak için.</td>
         <td>Yalnızca <b>muhakeme.ai</b> hizmetine (hesabınızın bulunduğu servis). Belge içerikleriniz buraya <b>gönderilmez</b>.</td>
       </tr>
     </table>
@@ -87,13 +91,13 @@
     <h2>2. İzinler ve neden isteniyor</h2>
     <table>
       <tr><th>İzin</th><th>Kullanım</th></tr>
-      <tr><td><code>storage</code></td><td>Cihazınızda tutulanlar: yerel uygulamanın oturum jetonu, arayüz tercihleriniz, son senkron özeti, bildirim listesi ve — hesabınıza giriş yaptıysanız — hesap kartında gösterilen ad ve e-posta adresiniz. <b>Belge içeriği veya dosya verisi saklanmaz.</b> Eklentiyi kaldırdığınızda hepsi silinir.</td></tr>
+      <tr><td><code>storage</code></td><td>Cihazınızda tutulanlar: yerel uygulamanın oturum jetonu, arayüz tercihleriniz, son senkron özeti, bildirim listesi ve — hesabınıza giriş yaptıysanız — hesap kartında gösterilen ad ve e-posta adresiniz ile lisans/deneme durumunuz. Bunlara ek olarak tek bir teknik kayıt tutulur: sık kullanılanlardan çıkarma işlevi için UYAP'ın çıkarma isteğinin <b>biçimi</b> — adres, HTTP yöntemi ve dosya kimliği <b>yer tutucuyla maskelenmiş</b> istek gövdesi şablonu (en çok 500 karakter). Bu <b>tek kayıt</b> 30 gün sonra kendiliğinden silinir; gerçek dosya kimliğiniz saklanmaz ve kayıt yalnızca siz UYAP'ın kendi Sık Kullanılan Dosyalarım ekranında çıkarma yaptığınızda oluşur. UYAP Vatandaş evrak listesi için alınan teşhis örneği diske yazılmaz; yalnızca açık sekmenin belleğinde tutulur ve sekme kapanınca yok olur. Bu kayıtların hiçbiri cihazınızdan çıkmaz. <b>Belge içeriği saklanmaz.</b> Bu kayıtların bir kısmı (son senkron özeti, bildirim listesi, tarama zaman damgaları, arşiv seçimleri ve arayüz tercihleri) UYAP sayfasının yerel deposunda (<code>localStorage</code>), diğerleri eklentinin deposunda (<code>chrome.storage.local</code>) tutulur. Eklentiyi kaldırdığınızda eklentinin deposu silinir; UYAP sayfasının yerel deposundaki kayıtlar, tarayıcıdan o sitenin verilerini temizlediğinizde silinir.</td></tr>
       <tr><td><code>activeTab</code></td><td>Araç çubuğu penceresini açtığınızda etkin sekmenin adresini okuyup hangi portalda olduğunuzu belirlemek ve o sekmedeki işlemi başlatmak için.</td></tr>
-      <tr><td><b>UYAP sayfalarındaki içerik betiği</b></td><td>Panel düğmesi ve envanter arayüzü, UYAP portallarının sayfalarına yüklenir. Dosya/evrak verisi <b>yalnızca siz bir işlem başlattığınızda</b> okunur; arka planda kendiliğinden veri çekilmez.</td></tr>
+      <tr><td><b>UYAP sayfalarındaki içerik betiği</b></td><td>Panel düğmesi ve kütüphane arayüzü, UYAP portallarının sayfalarına yüklenir. Belge <b>indirme yalnızca siz başlattığınızda</b> yapılır. Liste bilgileri iki durumda siz ayrıca bir düğmeye basmadan okunur: (1) masaüstü uygulaması çalışıyorken Avukat portalını açtığınızda sık kullanılan dosya listeniz ve bu dosyaların liste bilgileri (taraflar, duruşma tarihi) okunur ve yalnızca bilgisayarınızdaki masaüstü uygulamasına iletilir; (2) UYAP'ın kendi dosya tablolarını (Sık Kullanılan Dosyalarım, Dosya Sorgulama) açtığınızda, eklentinin bu tablolara eklediği sütunları doldurmak için ekranda görünen satırların liste bilgileri okunur. Vatandaş portalında sayfa açılışında kendiliğinden tarama yapılmaz. Belge içeriği kendiliğinden indirilmez.</td></tr>
       <tr><td><code>notifications</code></td><td>Uzun süren indirme işleminizin sonucu, indirme hatası veya UYAP oturumunuzun düşmesi hakkında masaüstü bildirimi göstermek — <b>yalnızca UYAP sekmesi görünür değilken</b>. Bildirimler yerel işlem özetidir; pazarlama bildirimi gönderilmez.</td></tr>
-      <tr><td><code>cookies</code> <span style="font-size:13px">(opsiyonel)</span></td><td>Yalnızca masaüstü uygulaması açık değilken eklenti penceresinden hesabınıza giriş/çıkış yapmayı seçerseniz istenir. Kapsamı yalnızca <b>www.muhakeme.ai</b> alan adıdır: çıkışta oturum çerezini silmek ve giriş öncesi geçersiz çerezleri temizlemek için kullanılır. Çerez içeriği okunup hiçbir yere gönderilmez. İzin vermezseniz eklenti çalışmaya devam eder; giriş masaüstü uygulamasından yapılır.</td></tr>
+      <tr><td><code>cookies</code> <span style="font-size:13px">(isteğe bağlı)</span></td><td>Kurulumda istenmez. Eklenti penceresinden hesabınıza giriş/çıkış yapmayı ya da "Tarayıcı oturumumu algıla" ile oturum eşitlemeyi seçerseniz istenir. Kapsamı yalnızca <b>muhakeme.ai</b> alan adıdır: giriş öncesi geçersiz çerezleri temizlemek, girişte oturum çerezini yazmak, çıkışta silmek ve aynı cihazdaki masaüstü uygulamasıyla oturumu eşitlemek (iki kez giriş yapmanız gerekmesin diye) için kullanılır. Eşitleme yalnızca cihaz içi bağlantıyla (<code>127.0.0.1</code>) yapılır; çerez değeri analiz edilmez ve cihazınızın dışına gönderilmez. İzin vermezseniz eklenti çalışmaya devam eder; giriş masaüstü uygulamasından yapılır.</td></tr>
       <tr><td><b>Site erişimi:</b> avukat.uyap.gov.tr, vatandas.uyap.gov.tr, 127.0.0.1</td><td>Dosya/evrak listelerini okumak, seçtiğiniz belgeleri indirmek ve yerel uygulamaya teslim etmek.</td></tr>
-      <tr><td><b>Site erişimi (opsiyonel):</b> www.muhakeme.ai</td><td>Yalnızca yukarıdaki hesap girişi senaryosunda; siz izin verirseniz istenir.</td></tr>
+      <tr><td><b>Site erişimi (isteğe bağlı):</b> www.muhakeme.ai</td><td>Yalnızca yukarıdaki hesap girişi ve oturum eşitleme senaryolarında; siz izin verirseniz istenir.</td></tr>
     </table>
 
     <h2>3. Verilerin nereye gittiği</h2>
@@ -106,20 +110,28 @@
       <li>Analitik, izleme, çerez tabanlı reklam veya kullanım istatistiği toplamaz.</li>
       <li>Verilerinizi satmaz, kiralamaz veya üçüncü taraflarla paylaşmaz.</li>
       <li>Verilerinizi kredi değerlendirmesi veya borç tahsilatı amacıyla kullanmaz.</li>
-      <li>İkinci bir UYAP oturumu açmaz; UYAP'ta sizin adınıza işlem yapmaz.</li>
+      <li>İkinci bir UYAP oturumu açmaz.</li>
     </ul>
+    <p><b>UYAP'ta yaptığı tek değişiklik:</b> siz onayladığınızda bir dosyayı sık kullanılanlar listenizden çıkarmak.
+    Bu işlem yalnızca sizin tıklamanızla başlar ve eklentinin kendi onay kutusunda "Çıkar" demenizle yürütülür
+    (UYAP'ın Sık Kullanılan Dosyalarım ekranında ise UYAP'ın kendi onayı geçerlidir); eklenti bunun dışında UYAP'ta
+    hiçbir kaydı değiştirmez ve sizin adınıza işlem yapmaz.</p>
 
     <h2>4. Hesap ve lisans (muhakeme.ai)</h2>
     <p>Ürünü kullanabilmek için muhakeme.ai hesabıyla giriş yapılır. Bu giriş, e-posta adresinize gönderilen
     tek kullanımlık kod ile yapılır ve <b>e-posta adresiniz ile oturum bilgileriniz muhakeme.ai tarafından</b>
     hesabınızı ve lisans/deneme durumunuzu yönetmek için işlenir. Giriş, tercihen bilgisayarınızdaki masaüstü
-    uygulaması üzerinden yürür; masaüstü uygulaması kapalıyken dilerseniz eklenti penceresinden de yapabilirsiniz.
+    uygulaması üzerinden yürür; masaüstü uygulaması kapalıyken dilerseniz eklenti penceresinden de yapabilirsiniz.</p>
+    <p>Bu bağlantılarda sunucuya iletilenler: e-posta adresiniz, tek kullanımlık giriş kodunuz ve oturum bilginiz;
+    lisans denetiminde ürün kodu; kullanım koşullarını kabul ettiğinizde kabul ettiğiniz metnin adı ve sürümü.
+    Her internet bağlantısında olduğu gibi IP adresiniz ile uygulama bilginiz (user agent) de sunucuya ulaşır;
+    kullanım koşullarını kabul ettiğinizde bu iki bilgi kabul kaydıyla birlikte saklanır.
     <b>UYAP dosya ve belge içerikleriniz bu hesap hizmetine hiçbir koşulda gönderilmez.</b></p>
 
     <h2>5. Veri saklama ve silme</h2>
     <ul>
       <li><b>Belgeler:</b> Bilgisayarınızdaki arşiv klasöründe, sizin kontrolünüzde kalır. Dilediğiniz zaman silebilirsiniz.</li>
-      <li><b>Oturum jetonu, tercihler, son senkron özeti, bildirim listesi ve (giriş yaptıysanız) hesap ad/e-postanız:</b> Tarayıcının yerel deposunda cihazınızda saklanır; eklentiyi kaldırdığınızda silinir.</li>
+      <li><b>Oturum jetonu, tercihler, son senkron özeti, bildirim listesi, teknik kayıt (30 günlük çıkarma şablonu) ve (giriş yaptıysanız) hesap ad/e-postanız ile lisans durumunuz:</b> Tarayıcının yerel deposunda cihazınızda saklanır; eklentiyi kaldırdığınızda silinir. (UYAP sayfasının yerel deposundaki kayıtlar, tarayıcıdan o sitenin verilerini temizlediğinizde silinir.)</li>
       <li><b>Hassas içerik uyarısı:</b> İndirdiğiniz UYAP evrakları sağlık, kimlik veya mali bilgi içerebilir. Eklenti bu belgeleri açmaz, içeriklerini ayrıştırmaz ve yalnızca sizin diskinize yazar; saklama ve koruma sorumluluğu size aittir.</li>
       <li><b>Hesap oturum çerezi:</b> Tarayıcınızda saklanır; eklenti penceresinden "Çıkış" yaptığınızda silinir.</li>
       <li><b>Hesap kaydınız:</b> muhakeme.ai üzerinden silinmesini talep edebilirsiniz (aşağıdaki iletişim adresi).</li>
